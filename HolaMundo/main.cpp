@@ -15,7 +15,7 @@ public:
     int getEdad();
 
     void mostrar();
-    bool esMayorDeEdad(int edad);
+    bool esMayorDeEdad();
 };
 
 void Persona::setDni(std::string dni) {
@@ -45,20 +45,39 @@ int Persona::getEdad() {
 void Persona::mostrar() {
     cout << "---PERSONA---\nDNI:" + this->dni + "\n";
     cout << "Nombre: " + this->nombre + "\n";
-    cout << "Edad: " + this->edad << endl;
+    cout << "Edad: " + this->edad << "\n";
 }
 
-bool Persona::esMayorDeEdad(int edad) {
-    if(edad >= 18){
+bool Persona::esMayorDeEdad() {
+    if(this->edad >= 18){
         return true;
     }
     return false;
 }
 
 int main() {
+    string dni;
+    string nombre;
+    int edad;
+
     Persona* persona;
     persona = new Persona();
 
+    cout << "Introduce el dni\n";
+    cin >> dni;
+
+    cout << "Introduce el nombre\n";
+    cin >> nombre;
+
+    cout << "Introduce la edad" << endl;
+    cin >> edad;
+
+    persona->setDni(dni);
+    persona->setNombre(nombre);
+    persona->setEdad(edad);
+
+    persona->mostrar();
+    cout << persona->esMayorDeEdad();
 
     delete persona;
 
